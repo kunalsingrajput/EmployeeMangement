@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Site</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sh1a384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <div class="card">
+            <div class="card-header">Empro Lite</div>
+            <div class="card-body">
+              <input
+                value="john"
+                type="text"
+                id="fname"
+                class="form-control"
+                placeholder="name"
+              />
+              <br />
+              <input
+                value="john@gmail.com"
+                type="text"
+                id="email"
+                class="form-control"
+                placeholder="email"
+              />
+              <br />
+              <input
+                type="text"
+                value="BCA"
+                id="ug"
+                class="form-control"
+                placeholder="ug detail"
+              />
+              <br />
+              <input
+                type="text"
+                value="MCA"
+                id="pg"
+                class="form-control"
+                placeholder=" pg details"
+              />
+              <br />
+              <input
+                type="text"
+                id="address"
+                value="Aurangabad"
+                class="form-control"
+                placeholder="address"
+              />
+              <br />
+              <select name="" id="designation" class="form-select">
+                <option value="frontend" selected>Front End Dev</option>
+                <option value="backend">Back End Dev</option>
+                <option value="uiux">UI/UX Dev</option>
+                <option value="mobile">Mobile App Dev</option>
+              </select>
+              <br />
+              <div>
+                <input name="status" id="ac" value="active" type="radio" />
+                <label for="ac">active</label>
+              </div>
+              <div>
+                <input
+                  checked
+                  name="status"
+                  id="ac"
+                  value="inactive"
+                  type="radio"
+                />
+                <label for="ac">Inactive</label>
+              </div>
+
+              <button
+                class="btn btn-success btn-lg w-100"
+                onclick="addEmployee()"
+              >
+                Add Employee
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="color: red" id="output"></div>
+
+      <!-- modal start -->
+      <div
+        class="modal fade"
+        id="showdetails"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdrop"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Employee Title
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="moutput"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- modal End -->
+    </div>
+    <!-- container ends -->
+
+    <!-- edit modal window -->
+
+    <div class="modal fade" id="editmodel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">Edit Employee Details</div>
+          <div class="modal-body">
+            <input type="text" id="mindex" />
+            <input
+              type="text"
+              id="mfname"
+              class="form-control"
+              placeholder="name"
+            />
+            <br />
+            <input
+              type="text"
+              id="memail"
+              class="form-control"
+              placeholder="email"
+            />
+            <br />
+            <input
+              type="text"
+              id="mug"
+              class="form-control"
+              placeholder="ug detail"
+            />
+            <br />
+            <input
+              type="text"
+              id="mpg"
+              class="form-control"
+              placeholder=" pg details"
+            />
+            <br />
+            <input
+              type="text"
+              id="maddress"
+              class="form-control"
+              placeholder="address"
+            />
+            <br />
+            <select name="" id="mdesignation" class="form-select">
+              <option value="frontend">Front End Dev</option>
+              <option value="backend">Back End Dev</option>
+              <option value="uiux">UI/UX Dev</option>
+              <option value="mobile">Mobile App Dev</option>
+            </select>
+
+            <div>
+              <input name="mstatus" id="mac" type="radio" value="active" />
+              <label for="mac">active</label>
+            </div>
+            <div>
+              <input name="mstatus" id="mnc" type="radio" value="inactive" />
+              <label for="mnc">inactive</label>
+            </div>
+
+            <button
+              class="btn btn-success btn-lg w-100"
+              onclick="editAndsave()"
+              ;
+              data-bs-dismiss="modal"
+            >
+              Upadate Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- edit modal window -->
+    <!--  modal window delete start-->
+    <div
+      class="modal fade"
+      id="deleteData"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="deleteData"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Are You Sure?</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="mdindex"></div>
+            <button
+              class="btn btn-success"
+              onclick="deleteEmployee()"
+              data-bs-dismiss="modal"
+            >
+              Yes
+            </button>
+            <button class="btn btn-danger" data-bs-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  modal window delete end-->
+
+    <script>
+      var data = [];
+
+      function addEmployee() {
+        var fname = document.getElementById("fname").value;
+        var email = document.getElementById("email").value;
+        var ug = document.getElementById("ug").value;
+        var pg = document.getElementById("pg").value;
+        var address = document.getElementById("address").value;
+        var designation = document.getElementById("designation").value;
+        // var status = document.getElementById("status").value;
+        var x = document.querySelector("input[name='status']:checked").value;
+        var x = document.querySelector("input[name='status']:checked").value;
+
+        var obj = {
+          name: fname,
+          email: email,
+          ug: ug,
+          pg: pg,
+          address: address,
+          designation: designation,
+          status: x,
+        };
+
+        // data.push(obj);
+        // console.log(data);
+
+        //local storage
+
+        var haskey = localStorage.getItem("employee");
+        console.log(haskey);
+        if (haskey == null) {
+          data.push(obj);
+          data = JSON.stringify(data);
+          localStorage.setItem("employee", data);
+        } else {
+          var dd = localStorage.getItem("employee");
+          dd = JSON.parse(dd);
+          dd.push(obj);
+          dd = JSON.stringify(dd);
+          localStorage.setItem("employee", dd);
+        }
+        display();
+      }
+      display();
+
+      function display() {
+        /*
+        <table class="table table-bordered table-dark">
+            <tr>
+              <th>Name</th>
+              <th>email</th>
+              <th>ug</th>
+              <th>pg</th>
+              <th>addres</th>
+                <th>designation</th>
+                <th>Details</th>
+                </tr>
+
+                <tr>
+                  <td>john</td>
+                  <td>john@gmail.com</td>
+                  <td>BCA</td>
+                  <td>MCA</td>
+                  <td>Aurangabad</td>
+                  <td>Front End</td>
+                <td><button class="btn btn-sm btn-success">Show Details</button></td>
+                </tr>
+        </table>*/
+
+        var str = `
+        <table class="table table-bordered table-dark" style="text-align: center;">
+          <tr>
+            <th>Name</th>
+                <th>Email</th>
+                <th>Ug</th>
+                <th>Pg</th>
+                <th>Addres</th>
+                <th>Designation</th>
+                <th>Status</th>
+                <th>Details</th>
+                <th>Update Details</th>
+                <th>Reset Details</th>
+                </tr>
+        `;
+        var dk = localStorage.getItem("employee");
+        if (dk == null) {
+          document.getElementById("output").innerHTML = `NO DATA FOUND`;
+        } else {
+          dk = JSON.parse(dk);
+        }
+        for (var i = 0; i < dk.length; i++) {
+          var bg = dk[i].status == "active" ? "table-success" : "table-danger";
+          str += `
+          <tr class="${bg}">
+                <td >${dk[i].name}</td>
+                <td >${dk[i].email}</td>
+                <td >${dk[i].ug}</td>
+                <td >${dk[i].pg}</td>
+                <td >${dk[i].address}</td>
+                <td >${dk[i].designation}</td>
+                <td >${dk[i].status}</td>
+                <td ><button class="btn btn-sm btn-success form-control" data-bs-target="#showdetails" data-bs-toggle="modal" onclick="showdetails(${i})" >Show Details</button></td>
+                <td ><button class="btn btn-sm btn-dark" data-bs-target="#editmodel" data-bs-toggle="modal" onclick="editData(${i})">Edit Details</button></td>
+                <td><button
+                  class="btn btn-sm btn-warning form-control" data-bs-target="#deleteData"
+                  data-bs-toggle="modal" onclick="addToDataToDeleteModal(${i})">Delete</button>
+                </td>
+                </tr>
+                `;
+        }
+        str += `</table>`;
+        document.getElementById("output").innerHTML = str;
+        console.log(str);
+        // console.log(x);
+      }
+      function showdetails(index) {
+        console.log(index);
+        var localData = localStorage.getItem("employee");
+        localData = JSON.parse(localData);
+        console.log(localData[index]);
+        document.getElementById("moutput").innerHTML = `
+        <input
+        value="${localData[index].name}"
+                type="text"
+                class="form-control"
+              />
+              <br />
+        <input
+        value="${localData[index].email}"
+                type="text"
+                class="form-control"
+              />
+              <br />
+              <input
+        value="${localData[index].ug}"
+                type="text"
+                class="form-control"
+              />
+              <br />
+              <input
+        value="${localData[index].pg}"
+                type="text"
+                class="form-control"
+              />
+              <br />.
+              <input
+        value="${localData[index].address}"
+                type="text"
+                class="form-control"
+              />
+              <br />
+              <input
+        value="${localData[index].designation}"
+                type="text"
+                class="form-control"
+              />
+              <br />
+              <input
+        value="${localData[index].status}"
+                type="text"
+                class="form-control"
+              />
+              <br /> `;
+      }
+      function editData(index) {
+        var localData = localStorage.getItem("employee");
+        localData = JSON.parse(localData);
+        // console.log(localData[index].name);
+
+        document.getElementById("mindex").value = index;
+        document.getElementById("mfname").value = localData[index].name;
+        document.getElementById("memail").value = localData[index].email;
+        document.getElementById("mug").value = localData[index].ug;
+        document.getElementById("mpg").value = localData[index].pg;
+        document.getElementById("maddress").value = localData[index].address;
+        document.getElementById("mdesignation").value =
+          localData[index].designation;
+        document.querySelector("input[name='mstatus']:checked").value =
+          localData[index].status;
+      }
+      function editAndsave() {
+        var index = document.getElementById("mindex").value;
+        var mfname = document.getElementById("mfname").value;
+        var memail = document.getElementById("memail").value;
+        var mug = document.getElementById("mug").value;
+        var mpg = document.getElementById("mpg").value;
+        var maddress = document.getElementById("maddress").value;
+        var mdesignation = document.getElementById("mdesignation").value;
+        var mstatus = document.querySelector(
+          "input[name='mstatus']:checked"
+        ).value;
+
+        var newData = localStorage.getItem("employee");
+        newData = JSON.parse(newData);
+
+        var obj = {
+          name: mfname,
+          email: memail,
+          ug: mug,
+          pg: mpg,
+          address: maddress,
+          designation: mdesignation,
+          status: mstatus,
+        };
+        newData[index] = obj;
+        newData = JSON.stringify(newData);
+        localStorage.setItem("employee", newData);
+
+        display();
+      }
+      function addToDataToDeleteModal(index) {
+        document.getElementById("mdindex").value = index;
+      }
+      function deleteEmployee() {
+        var index = document.getElementById("mdindex").value;
+        var newLocalData = localStorage.getItem("employee");
+        newLocalData = JSON.parse(newLocalData);
+
+        newLocalData.splice(index, 1);
+        newLocalData = JSON.stringify(newLocalData);
+        localStorage.setItem("employee", newLocalData);
+
+        display();
+      }
+    </script>
+  </body>
+</html>
